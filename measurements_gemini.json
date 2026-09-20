@@ -1,0 +1,50 @@
+{
+  "provider": "Google Gemini",
+  "model": "gemini-3.6-flash",
+  "token_counts": {
+    "sentence": {
+      "en": 13,
+      "ru": 18,
+      "kk": 31
+    },
+    "complaint": {
+      "en": 60,
+      "ru": 79,
+      "kk": 149
+    },
+    "system_prompt": {
+      "en": 41,
+      "ru": 52,
+      "kk": 88
+    }
+  },
+  "request_tokens": {
+    "en": 101,
+    "ru": 131,
+    "kk": 237
+  },
+  "one_request_billed": {
+    "en": {
+      "input_tokens": 101,
+      "output_tokens": 54,
+      "thoughts_tokens": 266,
+      "billable_output_tokens": 320
+    },
+    "ru": {
+      "input_tokens": 131,
+      "output_tokens": 102,
+      "thoughts_tokens": 599,
+      "billable_output_tokens": 701
+    },
+    "kk": {
+      "input_tokens": 237,
+      "output_tokens": 185,
+      "thoughts_tokens": 759,
+      "billable_output_tokens": 944
+    }
+  },
+  "ratios": {
+    "ru_en": 1.297,
+    "kk_en": 2.3465
+  }
+}

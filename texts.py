@@ -9,10 +9,11 @@ your own if you prefer -- but keep the three versions semantically parallel,
 otherwise the comparison measures translation length instead of tokenization.
 """
 
+
 from __future__ import annotations
 
+import json
 from typing import Dict
-
 LANGUAGES = ("en", "ru", "kk")
 
 #: One sentence. Short enough to inspect token by token.
@@ -70,8 +71,47 @@ SYSTEM_PROMPT: Dict[str, str] = {
 }
 
 #: Everything the lab measures, keyed by a short id.
+MY_NOTICE: Dict[str, str] = {
+    "en": (
+        "If the bank changes the service fee, it will notify the customer by SMS "
+        "at least ten days before the new fee takes effect. The notice will state "
+        "the new amount and the effective date."
+    ),
+    "ru": (
+        "Если банк изменит плату за обслуживание, он уведомит клиента по SMS "
+        "не менее чем за десять дней до вступления новой платы в силу. "
+        "В уведомлении будут указаны новый размер платы и дата её вступления в силу."
+    ),
+    "kk": (
+        "Егер банк қызмет көрсету ақысын өзгертсе, жаңа төлем күшіне енгенге дейін "
+        "кемінде он күн бұрын клиентке SMS арқылы хабарлайды. Хабарламада жаңа төлем "
+        "мөлшері және оның күшіне енетін күні көрсетіледі."
+    ),
+}
+KAZ_SHARED: Dict[str, str] = {
+    "en": "I was in Almaty with my mother for ten years, and in summer I stayed in the village with my grandfather.",
+    "ru": "Я десять лет был в Алматы с мамой, а летом оставался в ауле с дедушкой.",
+    "kk": "Мен анаммен Алматыда он жыл бойы болдым, ал жазда ауылда атаммен болдым.",
+}
+
+KAZ_SPECIFIC: Dict[str, str] = {
+    "en": "The story described Kundyz's large house, blue region and beautiful flowers.",
+    "ru": "В рассказе описывались большой дом Кундыз, голубой край и красивые цветы.",
+    "kk": "Әңгімеде Құндыздың үлкен үйі, көк өңірі және әдемі гүлдері туралы мәлімет берілді.",
+}
+COMPLAINT_JSON: Dict[str, str] = {
+    lang: json.dumps(
+        {"text": COMPLAINT[lang]},
+        ensure_ascii=False
+    )
+    for lang in LANGUAGES
+}
 CORPUS: Dict[str, Dict[str, str]] = {
     "sentence": SENTENCE,
     "complaint": COMPLAINT,
     "system_prompt": SYSTEM_PROMPT,
+    "my_notice": MY_NOTICE,
+    "kaz_shared": KAZ_SHARED,
+    "kaz_specific": KAZ_SPECIFIC,
+    "complaint_json": COMPLAINT_JSON,
 }
